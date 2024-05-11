@@ -3,15 +3,26 @@ defmodule TodoapiWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+  end
+
+  pipeline :auth do
+    plug TodoapiWeb.Auth.Pipeline
+    plug TodoapiWeb.Auth.SetAccount
   end
 
   scope "/api", TodoapiWeb do
     pipe_through :api
+    post "/users/sign_in", UserController, :sign_in
+  end
+
+  scope "/api", TodoapiWeb do
+    pipe_through [:api, :auth]
+    resources "/todos", TodoController, except: [:new, :edit]
   end
 
   scope "/", TodoapiWeb do
     pipe_through :api
-
     get "/", InfoController, :index
   end
 

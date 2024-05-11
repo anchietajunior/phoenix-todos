@@ -27,6 +27,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+# This config should be in ENV variables for safety purposes
+config :todoapi, TodoapiWeb.Auth.Guardian,
+  issuer: "todoapi",
+  secret_key: "CsWkXt0S0ETYUKgV06w+6uBEUWg3aHs5IO2W+27D1UKo6Eo7Nf0Vu4rWBya5EVc1"
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
