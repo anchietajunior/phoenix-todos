@@ -70,3 +70,15 @@ button:focus-visible {
 .navlink {
   padding: 10px;
 }
+
+.todos-list {
+  width: 70%;
+  list-style: none;
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.todos-list li {
+  font-size: 22px;
+  border-bottom: 1px solid gray;
+}
