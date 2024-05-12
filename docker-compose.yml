@@ -20,13 +20,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # web:
-  #   build: ./todofront
-  #   command: npm start
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - api
+  front:
+    build: ./todofront
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
 
 volumes:
   postgres_data:
