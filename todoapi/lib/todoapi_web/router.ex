@@ -13,6 +13,7 @@ defmodule TodoapiWeb.Router do
 
   scope "/api", TodoapiWeb do
     pipe_through :api
+    get "/", InfoController, :index
     post "/users/sign_in", UserController, :sign_in
   end
 
@@ -23,7 +24,6 @@ defmodule TodoapiWeb.Router do
 
   scope "/", TodoapiWeb do
     pipe_through :api
-    get "/", InfoController, :index
   end
 
   # Enable LiveDashboard in development
