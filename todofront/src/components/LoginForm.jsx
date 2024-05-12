@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
-import { login } from '../services/api'
+import { useAuth } from '../context/AuthContext'
 
 function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-	const navigate = useNavigate()
+  const { login } = useAuth()
+  const navigate = useNavigate()
 
-	const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     try {
-      await login(email, password);
-			navigate('/todos')
+      await login(email, password)
+      navigate('/todos')
     } catch (error) {
-      console.error('Login failed:', error);
-      alert('Login failed');
+      alert('Login failed')
     }
   }
 
-	return (
+  return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Email:</label>

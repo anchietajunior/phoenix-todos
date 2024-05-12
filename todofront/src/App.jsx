@@ -11,17 +11,16 @@ function App() {
 
   useEffect(() => {
     const fetchInfo = async () => {
-      const info = await getInfo();
-      setInfo(info);
-    };
-    fetchInfo();
-    console.log(info)
+      const fetchedInfo = await getInfo()
+      setInfo(fetchedInfo)
+    }
+    fetchInfo()
   }, [])
 
   return (
     <>
+      <p>App name: { info.name } | Version: { info.version }</p>
       <Nav />
-      <h1>Todos app with Phoenix + React</h1>
       <Outlet />
     </>
   )

@@ -8,7 +8,10 @@ import {
 import App from "./App"
 import Error from "./pages/Error"
 import Login from "./pages/Login"
-import Todos from "./pages/Todos"
+import IndexTodos from "./pages/todos/IndexTodos"
+import ShowTodo from './pages/todos/ShowTodo'
+import PrivateRoute from './components/PrivateRoute'
+import { AuthProvider } from './context/AuthContext'
 
 import './index.css'
 
@@ -16,7 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
     children: [
       {
         path: "/signin",
@@ -24,7 +27,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/todos",
-        element: <Todos />,
+        element: <PrivateRoute element={<IndexTodos />} />,
+      },
+      {
+        path: "/todos/:id",
+        element: <PrivateRoute element={<ShowTodo />} />,
       }
     ]
   },
@@ -32,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )

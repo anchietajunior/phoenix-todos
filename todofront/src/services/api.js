@@ -14,17 +14,29 @@ api.interceptors.request.use((config) => {
 
 export const login = async (email, password) => {
   const response = await api.post('/users/sign_in', { email, hash_password: password })
-	console.log(response)
   localStorage.setItem('todoapitoken', response.data.data.token)
   return response.data
 }
+
+export const logout = () => {
+  localStorage.removeItem('todoapitoken')
+}
+
+// INFO
 
 export const getInfo = async () => {
   const response = await api.get('/')
   return response.data
 }
 
+// TODOS
+
 export const getTodos = async () => {
   const response = await api.get('/todos');
   return response.data.data
-};
+}
+
+export const getTodoById = async (id) => {
+  const response = await api.get(`/todos/${id}`)
+  return response.data
+}
