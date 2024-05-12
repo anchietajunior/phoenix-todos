@@ -7,12 +7,12 @@ services:
     depends_on:
       - postgres
     environment:
-      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/tododb
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5454/tododb
 
   postgres:
     image: postgres
     ports:
-      - "5432:5432"
+      - "5454:5454"
     environment:
       - POSTGRES_DB=tododb
       - POSTGRES_USER=postgres

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getTodoById } from '../../services/api'
 
 const ShowTodo = () => {
@@ -29,6 +29,8 @@ const ShowTodo = () => {
   return (
     <div>
       <h1>Todo Details</h1>
+      <Link to={`/todos/${id}/edit`} className="newlink">Edit Todo</Link>
+      <Link to={`/todos/`}>List</Link>
       {todo ? (
         <div>
           <p><strong>Title:</strong> {todo.title}</p>

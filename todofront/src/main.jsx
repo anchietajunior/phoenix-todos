@@ -9,6 +9,8 @@ import App from "./App"
 import Error from "./pages/Error"
 import Login from "./pages/Login"
 import IndexTodos from "./pages/todos/IndexTodos"
+import NewTodo from './pages/todos/NewTodo'
+import EditTodo from './pages/todos/EditTodo'
 import ShowTodo from './pages/todos/ShowTodo'
 import PrivateRoute from './components/PrivateRoute'
 import { AuthProvider } from './context/AuthContext'
@@ -30,8 +32,16 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<IndexTodos />} />,
       },
       {
+        path: "/todos/new",
+        element: <PrivateRoute element={<NewTodo />} />,
+      },
+      {
         path: "/todos/:id",
         element: <PrivateRoute element={<ShowTodo />} />,
+      },
+      {
+        path: "/todos/:id/edit",
+        element: <PrivateRoute element={<EditTodo />} />,
       }
     ]
   },

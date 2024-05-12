@@ -71,11 +71,15 @@ button:focus-visible {
   padding: 10px;
 }
 
+.newlink {
+  font-size: 16px;
+}
+
 .todos-list {
-  width: 70%;
+  min-width: 750px;
   list-style: none;
   padding: 5px;
-  margin: 0 auto;
+  margin: 20px auto 0;
 }
 
 .todos-list li {
